@@ -1,6 +1,5 @@
 package String;
 
-import java.io.IOException;
 import java.util.*;
 
 public class Ex1 {
@@ -13,6 +12,20 @@ public class Ex1 {
         }
         sb.deleteCharAt(sb.length() - 1);
         return String.valueOf(sb);
+    }
+
+    static void combinations(String string){
+        System.out.println("Substrings of \"" + string + "\" are :-");
+        Set<String> hs = new HashSet<>();
+        for (int i = 0; i < string.length(); i++) {
+            for (int j = 1; j <= string.length() - i; j++) {
+                String sub = string.substring(i, j + i);
+                hs.add(sub);
+            }
+        }
+        for (String s: hs){
+            System.out.println(s);
+        }
     }
 
     static List<String> stringToList (String s){
@@ -39,11 +52,16 @@ public class Ex1 {
     }
 
     static void printAllCombinations(String soFar, String rest) {
+        Set<String> hs = new HashSet<>();
         if(rest.isEmpty()) {
             System.out.println(soFar);
+            hs.add(soFar);
         } else {
             printAllCombinations(soFar + rest.substring(0,1), rest.substring(1));
             printAllCombinations(soFar , rest.substring(1));
+        }
+        for (String s: hs){
+            System.out.println(s);
         }
     }
 
@@ -100,14 +118,15 @@ public class Ex1 {
 
         System.out.println("Nhap chuoi s: ");
         s = sc.nextLine();
-        printAllCombinations("", s);
+//        printAllCombinations("", s);
+        System.out.println("----------------");
+        combinations(s);
         System.out.println("Nhap ki tu x: ");
         x = (char) System.in.read();
         System.out.println("Nhap lan thu n xuat hien: ");
         int n= sc.nextInt();
         count(x, s, n);
         System.out.println(replace("I am fresher", "fresher", "junior"));
-//        printAllCombinations("", s);
 
         List<String> strings = new ArrayList<>();
         strings.add("abc");
