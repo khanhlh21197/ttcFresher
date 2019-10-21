@@ -2,6 +2,7 @@ package Collections.Ex2;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Handler {
 
@@ -62,20 +63,12 @@ public class Handler {
 
     }
 
-    public HashMap<String, ArrayList<Bill>> sameDate() {
-        HashMap<String, ArrayList<Bill>> has = new HashMap<>();
-        ArrayList<Bill> tempList = new ArrayList<>();
-        ArrayList<String> dateList = new ArrayList<>();
-//        for (Bill b: tempList){
-//            dateSet.add(b.getDate());
-//        }
-//        for (Bill b: bills){
-//            if (dateSet.contains(b.getDate())){
-//                tempList.add(b);
-//            }
-//        }
-        print(tempList);
-        return has;
+    public void sameDate() {
+        Map<String, List<String>> has = bills.stream().collect(
+                Collectors.groupingBy(Bill::getDate,
+                        Collectors.mapping(Bill::getName, Collectors.toList()))
+        );
+        System.out.println(has);
     }
 
     public class MoneyComparator implements Comparator<Bill> {
