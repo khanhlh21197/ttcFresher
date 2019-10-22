@@ -44,48 +44,53 @@ public class Handler {
         Collections.sort(bills, new MoneyComparator());
     }
 
-    public ArrayList<Bill> moreThanOneMillion(){
+    public ArrayList<Bill> moreThanOneMillion() {
         ArrayList<Bill> lists = new ArrayList<>();
-        for(Bill b: bills){
-            if (b.getMoney() >= 1000000){
+        for (Bill b : bills) {
+            if (b.getMoney() >= 1000000) {
                 lists.add(b);
             }
         }
         return lists;
     }
 
-    public void distinctDate(){
+    public void distinctDate() {
         Set<String> dates = new HashSet<>();
-        for (Bill b: bills){
+        for (Bill b : bills) {
             dates.add(b.getDate());
         }
-        for (String s: dates){
+        for (String s : dates) {
             System.out.println(s);
         }
     }
 
-    public void distinctIdAndName(){
+    public void distinctIdAndName() {
         Set<Bill> billSet = new HashSet<>(bills);
-        for (Bill b: billSet){
+        for (Bill b : billSet) {
             System.out.println(b);
         }
     }
 
-    public void sameDate() {
-        List<Bill> listB = new ArrayList<>();
+    public Map<String, List<Bill>> sameDate() {
+        List<Bill> listB = null;
 //        Map<String, List<String>> has = bills.stream().collect(
 //                Collectors.groupingBy(Bill::getDate,
 //                        Collectors.mapping(Bill::getName, Collectors.toList()))
 //        );
         Map<String, List<Bill>> has = new HashMap<>();
-        for (Bill b: bills){
+        for (Bill b : bills) {
             if (!has.containsKey(b.getDate())){
+                listB = new ArrayList<>();
                 listB.add(b);
                 has.put(b.getDate(), listB);
             }else{
-
+                List<Bill> temp = has.get(b.getDate());
+                temp.add(b);
+                has.put(b.getDate(), temp);
             }
         }
+        has.forEach((key, value) -> System.out.println(key + " - " + value));
+        return has;
     }
 
     public class MoneyComparator implements Comparator<Bill> {
