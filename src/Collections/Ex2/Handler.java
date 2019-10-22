@@ -9,6 +9,7 @@ public class Handler {
     public ArrayList<Bill> bills;
 
     public void add() {
+        Bill b0 = new Bill(1, "LHKhanh 1", 1000000, "2019-10-18");
         Bill b1 = new Bill(1, "LHKhanh 1", 1000000, "2019-10-18");
         Bill b2 = new Bill(2, "LHKhanh 2", 1200000, "2019-10-17");
         Bill b3 = new Bill(3, "LHKhanh 3", 1500000, "2017-10-19");
@@ -18,6 +19,7 @@ public class Handler {
         Bill b7 = new Bill(7, "LHKhanh 7", 800000, "2014-09-20");
         Bill b8 = new Bill(8, "LHKhanh 8", 90000, "2018-09-12");
         Bill b9 = new Bill(8, "LHKhanh 8", 90000, "2018-09-12");
+        Bill b10 = new Bill(8, "LHKhanh 8", 90000, "2018-09-12");
 
         bills = new ArrayList<>();
         bills.add(b1);
@@ -28,6 +30,8 @@ public class Handler {
         bills.add(b6);
         bills.add(b7);
         bills.add(b8);
+        bills.add(b9);
+        bills.add(b10);
     }
 
     public void print(ArrayList<Bill> listOfBills) {
@@ -61,27 +65,27 @@ public class Handler {
     }
 
     public void distinctIdAndName(){
-        Set<Integer> idSet = new HashSet<>();
-        Set<String> nameSet = new HashSet<>();
-        Set<Bill> billSet = new HashSet<>();
-        for (Bill b: bills){
-            idSet.add(b.getId());
-            nameSet.add(b.getName());
+        Set<Bill> billSet = new HashSet<>(bills);
+        for (Bill b: billSet){
+            System.out.println(b);
         }
-        for (Bill b: bills){
-            if (idSet.contains(b.getId()) && nameSet.contains(b.getName())){
-                billSet.add(b);
-            }
-        }
-        System.out.println(billSet);
     }
 
     public void sameDate() {
-        Map<String, List<String>> has = bills.stream().collect(
-                Collectors.groupingBy(Bill::getDate,
-                        Collectors.mapping(Bill::getName, Collectors.toList()))
-        );
-        System.out.println(has);
+        List<Bill> listB = new ArrayList<>();
+//        Map<String, List<String>> has = bills.stream().collect(
+//                Collectors.groupingBy(Bill::getDate,
+//                        Collectors.mapping(Bill::getName, Collectors.toList()))
+//        );
+        Map<String, List<Bill>> has = new HashMap<>();
+        for (Bill b: bills){
+            if (!has.containsKey(b.getDate())){
+                listB.add(b);
+                has.put(b.getDate(), listB);
+            }else{
+
+            }
+        }
     }
 
     public class MoneyComparator implements Comparator<Bill> {

@@ -3,8 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="63e216f4-aa77-448d-a66e-068906b7c270" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Bill.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Bill.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Handler$MoneyComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Handler$MoneyComparator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Handler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ttcFresher/Collections/Ex2/Handler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ttcFresher/Date/StringToDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ttcFresher/Date/StringToDate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/ttcFresher/String/Ex1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/ttcFresher/String/Ex1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Collections/Ex2/Bill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collections/Ex2/Bill.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Collections/Ex2/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collections/Ex2/Handler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Collections/Ex2/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Collections/Ex2/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Date/StringToDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Date/StringToDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/String/Ex1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/String/Ex1.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +50,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.StringToDate">
     <configuration name="Ex1 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="String.Ex1" />
       <module name="ttcFresher" />
@@ -111,9 +118,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.StringToDate" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Ex1 (1)" />
-        <item itemvalue="Application.StringToDate" />
         <item itemvalue="Application.Ex1" />
         <item itemvalue="Application.Handler" />
       </list>

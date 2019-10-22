@@ -49,4 +49,20 @@ public class Bill {
     public String toString() {
         return id + "    " + name + "    " + money + "   " + date;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Bill){
+            Bill another = (Bill) obj;
+            if (this.id == another.getId() && this.name.equals(another.getName())){
+                return true;
+            }
+        };
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return id;
+    }
 }

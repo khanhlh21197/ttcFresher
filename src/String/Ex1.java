@@ -6,12 +6,7 @@ public class Ex1 {
 
 
     static String listToString(List<String> strings){
-        StringBuffer sb = new StringBuffer();
-        for (int i= 0; i< strings.size(); i++){
-            sb.append(strings.get(i) + ",");
-        }
-        sb.deleteCharAt(sb.length() - 1);
-        return String.valueOf(sb);
+        return String.join(", ", strings);
     }
 
     static void combinations(String string){
@@ -84,21 +79,8 @@ public class Ex1 {
             }
         }
         System.out.println("So lan xh: "+count);
-
-        for (int i= 0; i< s.length(); i++){
-            if (x == s.charAt(i)){
-                System.out.println("Phan tu dau tien o vi tri: "+i);
-                break;
-            }
-        }
-
-        for (int i= s.length() - 1; i> 0; i--){
-            if (x == s.charAt(i)){
-                System.out.println("Phan tu cuoi cung o vi tri: "+i);
-                break;
-            }
-        }
-
+        System.out.println("Phan tu dau tien xh o vi tri: "+s.indexOf(x));
+        System.out.println("Phan tu cuoi cung xh o vi tri: "+s.lastIndexOf(x));
         int dem = 0;
         for (int i= 0; i< s.length(); i++){
             if (x == s.charAt(i)){

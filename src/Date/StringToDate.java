@@ -3,6 +3,11 @@ package Date;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.ZoneId;
+import java.time.temporal.TemporalAdjuster;
+import java.time.temporal.TemporalAdjusters;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
@@ -22,6 +27,12 @@ public class StringToDate {
     static Date stringToDate(String dateInString, SimpleDateFormat formatter) throws Exception{
             Date date = formatter.parse(dateInString);
             return date;
+    }
+
+    static LocalDate dateToLocalDate(Date date){
+        return date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
     }
 
     static String DateToString(Date date, SimpleDateFormat formatter) throws Exception{
@@ -47,75 +58,36 @@ public class StringToDate {
         return timestamp;
     }
 
-    static String getDay(String date){
-        return date.substring(8,10);
-    }
-
-    static int getIntDay(String date){
-        return Integer.parseInt(date.substring(8,10));
-    }
-
-    static String getMonth(String date){
-        return date.substring(5,7);
-    }
-
-    static int getIntMonth(String date){
-        return Integer.parseInt(date.substring(5,7));
-    }
-
-    static String getYear(String date){
-        return date.substring(0,4);
-    }
-
-    static int getIntYear(String date){
-        return Integer.parseInt(date.substring(0,4));
-    }
-
     static void dateDiff(String date1, String date2, SimpleDateFormat formatter) throws Exception{
         Date d1 = formatter.parse(date1);
         Date d2 = formatter.parse(date2);
 
-        long diff = d2.getTime() - d1.getTime();
-
-        long diffSeconds = diff / 1000 % 60;
-        long diffMinutes = diff / (60 * 1000) % 60;
-        long diffHours = diff / (60 * 60 * 1000) % 24;
-        long diffDays = diff / (24 * 60 * 60 * 1000);
-        long diffMonths = diff / (24 * 60 * 60 * 1000) % 12;
-        long diffYears = diffDays % 365;
-
-        System.out.print(diffYears + " years,");
-        System.out.print(diffMonths + " months,");
-        System.out.print(diffDays + " days, ");
-        System.out.print(diffHours + " hours, ");
-        System.out.print(diffMinutes + " minutes, ");
-        System.out.print(diffSeconds + " seconds.");
+        LocalDate beginDate = dateToLocalDate(d1);
+        LocalDate endDate = dateToLocalDate(d2);
+        Period period = Period.between(beginDate, endDate);
+        int days = period.getDays();
+        int months = period.getMonths();
+        int years = period.getYears();
+        System.out.println(days+" days "+ months + " months "+ years +" years");
     }
 
     static void dayOfMonth(String dateInString, SimpleDateFormat formatter) throws Exception{
         Date date =  stringToDate(dateInString, formatter);
         Calendar calendar = dateToCalendar(date);
-        System.out.println(getIntMonth(dateInString)+"");
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd");
 
-        int beginOfMonth = calendar.getActualMinimum(Calendar.DATE);
-        calendar.set(getIntYear(dateInString), getIntMonth(dateInString), beginOfMonth);
-        System.out.println("Ngay dau tien cua thang: "+format.format(calendar.getTime()));
-
-        int endOfMonth = calendar.getMaximum(Calendar.DATE);
-        calendar.set(getIntYear(dateInString), getIntMonth(dateInString), endOfMonth);
-        System.out.println("Ngay cuoi cung cua thang: "+format.format(calendar.getTime()));
+        LocalDate localDate = dateToLocalDate(date);
+        System.out.println("Ngay dau tien cua thang: "+localDate.with(TemporalAdjusters.firstDayOfMonth()));
+        System.out.println("Ngay cuoi cung cua thang: "+localDate.with(TemporalAdjusters.lastDayOfMonth()));
 
         int dayBeginOfWeek = calendar.getFirstDayOfWeek();
-        calendar.set(getIntYear(dateInString), getIntMonth(dateInString) - 1, dayBeginOfWeek);
+        System.out.println(dayBeginOfWeek);
         System.out.println("Ngay dau tien cua tuan: "+format.format(calendar.getTime()));
 
         calendar.add(Calendar.DATE, 100);
         Date dateFromCalendar = calendarToDate(calendar);
-//        System.out.println(beginDay);
-//        System.out.println(endDay);
-//        System.out.println(dayBeginOfWeek);
+
         String stringDate = format.format(dateFromCalendar);
         System.out.println("100 ngay sau: "+stringDate);
     }
