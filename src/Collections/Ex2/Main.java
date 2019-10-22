@@ -13,5 +13,7 @@ public class Main {
         handler.print(handler.moreThanOneMillion());
         System.out.println("Hoa don co cung ngay:");
         handler.sameDate();
+        System.out.println("Distinct Id and Name: ");
+        handler.distinctIdAndName();
     }
 }

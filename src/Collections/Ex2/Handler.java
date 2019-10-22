@@ -17,6 +17,7 @@ public class Handler {
         Bill b6 = new Bill(6, "LHKhanh 6", 500000, "2016-09-16");
         Bill b7 = new Bill(7, "LHKhanh 7", 800000, "2014-09-20");
         Bill b8 = new Bill(8, "LHKhanh 8", 90000, "2018-09-12");
+        Bill b9 = new Bill(8, "LHKhanh 8", 90000, "2018-09-12");
 
         bills = new ArrayList<>();
         bills.add(b1);
@@ -60,7 +61,19 @@ public class Handler {
     }
 
     public void distinctIdAndName(){
-
+        Set<Integer> idSet = new HashSet<>();
+        Set<String> nameSet = new HashSet<>();
+        Set<Bill> billSet = new HashSet<>();
+        for (Bill b: bills){
+            idSet.add(b.getId());
+            nameSet.add(b.getName());
+        }
+        for (Bill b: bills){
+            if (idSet.contains(b.getId()) && nameSet.contains(b.getName())){
+                billSet.add(b);
+            }
+        }
+        System.out.println(billSet);
     }
 
     public void sameDate() {
