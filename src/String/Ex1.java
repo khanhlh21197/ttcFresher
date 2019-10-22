@@ -1,5 +1,8 @@
 package String;
 
+import kotlin.jvm.internal.markers.KMappedMarker;
+
+import java.awt.image.ImageProducer;
 import java.util.*;
 
 public class Ex1 {
@@ -44,6 +47,19 @@ public class Ex1 {
                 }
             }
         }
+    }
+
+    static void count(String s){
+        String [] arr = s.split("");
+        Map<String, Integer> hs = new HashMap<>();
+        for (String x: arr){
+            if (hs.containsKey(x)){
+                hs.put(x, hs.get(x) + 1);
+            }else{
+                hs.put(x, 1);
+            }
+        }
+        hs.forEach((key, value) -> System.out.println(key + " - " + value));
     }
 
     static void printAllCombinations(String soFar, String rest) {
@@ -101,6 +117,7 @@ public class Ex1 {
         System.out.println("Nhap chuoi s: ");
         s = sc.nextLine();
 //        printAllCombinations("", s);
+        count(s);
         System.out.println("----------------");
         combinations(s);
         System.out.println("Nhap ki tu x: ");
