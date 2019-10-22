@@ -58,6 +58,13 @@ public class StringToDate {
         return timestamp;
     }
 
+    static String timestampToString(Timestamp timestamp, SimpleDateFormat formatter) throws Exception{
+        Date date = new Date();
+        date.setTime(timestamp.getTime());
+        String formattedDate = formatter.format(date);
+        return formattedDate;
+    }
+
     static void dateDiff(String date1, String date2, SimpleDateFormat formatter) throws Exception{
         Date d1 = formatter.parse(date1);
         Date d2 = formatter.parse(date2);
@@ -114,6 +121,7 @@ public class StringToDate {
 
         dayOfMonth(dateInString, formatter);
 
+        System.out.println("Time stamp: ");
         System.out.println(stringToTimestamp(dateInString, formatter));
         changeFormatter(dateInString, formatter);
 
